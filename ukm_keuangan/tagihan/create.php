@@ -1,4 +1,5 @@
 <?php
+include '../auth.php';
 include '../db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -42,13 +43,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <title>Tambah Tagihan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f8f9fa; margin: 0; }
+        .nav-left {
+            height: 100vh;
+            background: #343a40;
+            padding: 20px;
+            color: white;
+        }
+        .nav-left a {
+            color: white;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .nav-left a:hover {
+            background: #495057;
+        }
+        .header-bar {
+            background: white;
+            padding: 15px 20px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .form-container {
+            padding: 30px;
+        }
+    </style>
 </head>
-<body class="bg-light">
-<div class="container mt-5">
-    <div class="card">
-        <div class="card-header">Tambah Tagihan</div>
-        <div class="card-body">
-            <form method="post">
+<body>
+<div class="d-flex">
+    <div class="nav-left">
+        <h4>e-KAS</h4>
+        <p><?= $_SESSION['username'] ?> - Online</p>
+        <hr>
+        <a href="../dashboard_admin.php">DASHBOARD</a>
+        <a href="../users/">USERS</a>
+        <a href="../transaksi/">TRANSAKSI</a>
+        <a href="../tagihan/">TAGIHAN</a>
+        <a href="../piutang/">PIUTANG</a>
+        <a href="../logout.php">KELUAR</a>
+    </div>
+    <div class="flex-grow-1">
+        <div class="header-bar">
+            <h4>Tambah Tagihan</h4>
+        </div>
+        <div class="form-container">
+            <form method="POST">     
                 <div class="form-group">
                     <label>User ID</label>
                     <input type="number" name="user_id" class="form-control" required>
